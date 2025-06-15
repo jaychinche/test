@@ -1,32 +1,22 @@
-services:
-  - type: web
-    name: apeastern-scraper
-    env: python
-    plan: free                # or basic/pro…
-    buildCommand: |
-      # ---------- Python deps ----------
-      pip install --no-cache-dir -r requirements.txt
+# --- Python deps ------------------------------------------------
+pip install -r requirements.txt
 
-      # ---------- Chrome + ChromeDriver ----------
-      apt-get update -qqy
-      apt-get install -qqy --no-install-recommends \
-        wget gnupg unzip ca-certificates
-      wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
-      echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" \
-        > /etc/apt/sources.list.d/google-chrome.list
-      apt-get update -qqy
-      apt-get install -qqy --no-install-recommends google-chrome-stable
-      CHROME_MAJOR=$(google-chrome --version | grep -oP '\d+' | head -1)
-      DRIVER_VERSION=$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_MAJOR})
-      wget -q https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip
-      unzip -o chromedriver_linux64.zip -d /usr/local/bin/
-      chmod +x /usr/local/bin/chromedriver
-      rm chromedriver_linux64.zip
-    startCommand: |
-      # gunicorn will honour Render’s $PORT
-      gunicorn scraper:app --bind 0.0.0.0:$PORT --workers 1 --timeout 300
-    envVars:
-      - key: CHROME_BIN
-        value: /usr/bin/google-chrome
-      - key: CHROMEDRIVER_PATH
-        value: /usr/local/bin/chromedriver
+# --- Chrome + matching ChromeDriver -----------------------------
+apt-get update -qqy
+apt-get install -qqy --no-install-recommends \
+  wget gnupg unzip ca-certificates
+
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" \
+  > /etc/apt/sources.list.d/google-chrome.list
+
+apt-get update -qqy
+apt-get install -qqy --no-install-recommends google-chrome-stable
+
+# grab the driver that matches Chrome’s major version
+CHROME_MAJOR=$(google-chrome --version | grep -oP '\d+' | head -1)
+DRIVER_VERSION=$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_MAJOR})
+wget -q https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip
+unzip -o chromedriver_linux64.zip -d /usr/local/bin/
+chmod +x /usr/local/bin/chromedriver
+rm chromedriver_linux64.zip
