@@ -4,3 +4,4 @@ webdriver-manager
 pandas
 openpyxl
 requests
+gunicorn
