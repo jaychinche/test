@@ -1,0 +1,51 @@
+2025-06-15 12:25:23,778 - INFO - Directory structure verified
+2025-06-15 12:25:28,668 - INFO - ====== WebDriver manager ======
+2025-06-15 12:25:28,669 - INFO - 🚀 Scraping started
+2025-06-15 12:25:28,863 - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-15 12:25:29,596 - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-15 12:25:29,952 - INFO - Driver [/Users/jaydnayeshwarchinche/.wdm/drivers/chromedriver/mac64/137.0.7151.70/chromedriver-mac-arm64/chromedriver] found in cache
+2025-06-15 12:25:31,021 - ERROR - ❌ Scraping failed with error: [Errno 2] No such file or directory: '/Users/jaydnayeshwarchinche/Desktop/single_threading-Code/data/input/VSKP1_data.xlsx'
+2025-06-15 12:25:31,092 - INFO - 🚪 Browser closed
+2025-06-15 12:25:43,403 - WARNING - Invalid choice. Please try again.
+2025-06-15 12:25:45,361 - INFO - ====== WebDriver manager ======
+2025-06-15 12:25:45,361 - INFO - 🚀 Scraping started
+2025-06-15 12:25:45,537 - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-15 12:25:45,897 - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-15 12:25:46,192 - INFO - Driver [/Users/jaydnayeshwarchinche/.wdm/drivers/chromedriver/mac64/137.0.7151.70/chromedriver-mac-arm64/chromedriver] found in cache
+2025-06-15 12:25:46,949 - ERROR - ❌ Scraping failed with error: [Errno 2] No such file or directory: '/Users/jaydnayeshwarchinche/Desktop/single_threading-Code/data/input/VSKP1_data.xlsx'
+2025-06-15 12:25:47,018 - INFO - 🚪 Browser closed
+2025-06-15 12:30:14,578 - INFO - Directory structure verified
+2025-06-15 12:30:15,830 - INFO - ====== WebDriver manager ======
+2025-06-15 12:30:15,831 - INFO - 🚀 Scraping started
+2025-06-15 12:30:16,028 - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-15 12:30:17,480 - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-15 12:30:17,930 - INFO - Driver [/Users/jaydnayeshwarchinche/.wdm/drivers/chromedriver/mac64/137.0.7151.70/chromedriver-mac-arm64/chromedriver] found in cache
+2025-06-15 12:30:18,924 - INFO - Starting scraping from index 0 of 1000 CIDs
+2025-06-15 12:30:18,925 - INFO - Previously processed: 0 success, 0 failed
+2025-06-15 12:30:18,925 - INFO - 🔍 Processing CID 1123121253349729 (1/1000)
+2025-06-15 12:30:45,751 - INFO - ✅ Successfully scraped CID 1123121253349729
+2025-06-15 12:30:45,752 - INFO - 🔍 Processing CID 1123121205349739 (2/1000)
+2025-06-15 12:30:56,332 - INFO - ✅ Successfully scraped CID 1123121205349739
+2025-06-15 12:30:56,333 - INFO - 🔍 Processing CID 1123121254349735 (3/1000)
+2025-06-15 12:31:07,423 - INFO - ✅ Successfully scraped CID 1123121254349735
+2025-06-15 12:31:07,424 - INFO - 🔍 Processing CID 1123121205349738 (4/1000)
+2025-06-15 12:31:18,193 - INFO - ✅ Successfully scraped CID 1123121205349738
+2025-06-15 12:31:18,194 - INFO - 🔍 Processing CID 1123121253349730 (5/1000)
+2025-06-15 12:44:31,317 - INFO - Directory structure verified
+2025-06-15 12:44:57,597 - INFO - Directory structure verified
+2025-06-15 12:45:11,372 - INFO - Directory structure verified
+2025-06-15 12:45:11,377 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9000
+ * Running on http://192.168.19.182:9000
+2025-06-15 12:45:11,377 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-15 12:45:44,961 - INFO - ====== WebDriver manager ======
+2025-06-15 12:45:44,962 - INFO - 127.0.0.1 - - [15/Jun/2025 12:45:44] "POST /start-scraping HTTP/1.1" 200 -
+2025-06-15 12:45:45,115 - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-15 12:45:45,469 - INFO - Get LATEST chromedriver version for google-chrome
+2025-06-15 12:45:45,827 - INFO - Driver [/Users/jaydnayeshwarchinche/.wdm/drivers/chromedriver/mac64/137.0.7151.70/chromedriver-mac-arm64/chromedriver] found in cache
+2025-06-15 12:45:46,704 - INFO - Starting scraping from index 4 of 1000 CIDs
+2025-06-15 12:45:46,704 - INFO - Previously processed: 4 success, 0 failed
+2025-06-15 12:45:46,704 - INFO - 🔍 Processing CID 1123121253349730 (5/1000)
+2025-06-15 12:46:08,619 - INFO - ✅ Successfully scraped CID 1123121253349730
+2025-06-15 12:46:08,620 - INFO - 🔍 Processing CID 1123121252349737 (6/1000)
