@@ -1,22 +1,28 @@
+#!/bin/bash
+# --- render-build.sh ---
+
 # --- Python deps ------------------------------------------------
 pip install -r requirements.txt
 
 # --- Chrome + matching ChromeDriver -----------------------------
+echo "Installing Chrome and ChromeDriver..."
 apt-get update -qqy
 apt-get install -qqy --no-install-recommends \
-  wget gnupg unzip ca-certificates
+    wget gnupg unzip ca-certificates
 
+# Install Google Chrome
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
-echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" \
-  > /etc/apt/sources.list.d/google-chrome.list
-
+echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
 apt-get update -qqy
 apt-get install -qqy --no-install-recommends google-chrome-stable
 
-# grab the driver that matches Chrome’s major version
+# Install matching ChromeDriver
 CHROME_MAJOR=$(google-chrome --version | grep -oP '\d+' | head -1)
 DRIVER_VERSION=$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_MAJOR})
 wget -q https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip
 unzip -o chromedriver_linux64.zip -d /usr/local/bin/
 chmod +x /usr/local/bin/chromedriver
 rm chromedriver_linux64.zip
+
+echo "Chrome version: $(google-chrome --version)"
+echo "ChromeDriver version: $(chromedriver --version)"
