@@ -46,6 +46,9 @@ SCRAPER_API_KEY = "72efff2e41f7f4898cb0ba5cb1aa1ce7"  # Replace with your actual
 SCRAPER_API_ENDPOINT = "https://api.scraperapi.com"
 TARGET_BASE_URL = "https://httpbin.org/"  # Replace with your actual target URL
 
+# User-Agent header
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36'
+
 # ---------------------- LOGGING SETUP ----------------------
 logging.basicConfig(
     level=logging.INFO,
@@ -70,13 +73,18 @@ def scrape_with_api(cid):
         target_url = f"{TARGET_BASE_URL}?cid={cid}"
         encoded_url = quote(target_url, safe='')
         
-        # Construct the API URL
+        # Construct the API URL with headers
         api_url = f"{SCRAPER_API_ENDPOINT}?api_key={SCRAPER_API_KEY}&url={encoded_url}"
+        
+        # Custom headers
+        headers = {
+            'User-Agent': USER_AGENT
+        }
         
         logger.info(f"Scraping CID {cid} via API: {api_url}")
         
-        # Make the request with timeout
-        response = requests.get(api_url, timeout=30)
+        # Make the request with timeout and headers
+        response = requests.get(api_url, headers=headers, timeout=30)
         
         if response.status_code == 200:
             # Process the response data
@@ -113,6 +121,9 @@ def initialize_browser():
     chrome_options.add_argument("--headless=new")  # New headless mode
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--window-size=1920,1080")
+    
+    # Set User-Agent for browser
+    chrome_options.add_argument(f"user-agent={USER_AGENT}")
     
     # For Render.com specifically - use Chromium instead of Chrome
     chrome_options.binary_location = "/usr/bin/chromium-browser"
@@ -271,7 +282,10 @@ def test_api():
     api_url = f"{SCRAPER_API_ENDPOINT}?api_key={SCRAPER_API_KEY}&url={encoded_url}"
     
     try:
-        response = requests.get(api_url, timeout=10)
+        headers = {
+            'User-Agent': USER_AGENT
+        }
+        response = requests.get(api_url, headers=headers, timeout=10)
         if response.status_code == 200:
             return jsonify({
                 "status": "success",
