@@ -125,11 +125,11 @@ def initialize_browser():
     # Set User-Agent for browser
     chrome_options.add_argument(f"user-agent={USER_AGENT}")
     
-    # For Render.com specifically - use Chromium instead of Chrome
-    chrome_options.binary_location = "/usr/bin/chromium-browser"
+    # For Render.com - use the correct Chrome binary location
+    chrome_options.binary_location = "/usr/bin/google-chrome"  # Changed from chromium-browser
     
     # Set up ChromeDriver
-    chrome_service = ChromeService(ChromeDriverManager().install())
+    chrome_service = ChromeService(executable_path="/usr/local/bin/chromedriver")
     
     try:
         driver = webdriver.Chrome(
@@ -141,7 +141,6 @@ def initialize_browser():
     except Exception as e:
         logger.error(f"Failed to initialize browser: {e}")
         raise
-
 # ---------------------- SCRAPING FUNCTIONS ----------------------
 def scraping_worker():
     global should_pause, should_stop
